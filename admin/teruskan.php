@@ -16,7 +16,7 @@ if ($sql)
 ?>
 <script type="text/javascript">
 	alert ('Data Berhasil Disimpan');
-	window.location='laporan_menunggu.php';
+	window.location='page_admin.php?url=laporan_menunggu';
 </script>
 <?php
 }

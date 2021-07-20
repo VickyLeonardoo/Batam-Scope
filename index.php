@@ -30,7 +30,7 @@
                         <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> 
         </nav>
         <!-- Masthead-->
         <header class="masthead">

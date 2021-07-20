@@ -6,23 +6,41 @@ if (isset($_GET['url']))
 	switch($url)
 	{
 
-        case 'laporan_masuk';
-        include 'laporan_menunggu.php';
+        case 'masyarakat';
+        include 'masyarakat.php';
+        break;
+        
+		case 'laporan_menunggu';
+		include 'laporan_menunggu.php';
+		break;
+
+		case 'laporan_diproses';
+		include 'laporan_diterima.php';
+		break;
+
+        case 'edit_admin';
+        include 'edit_admin.php';
         break;
 
-        case 'laporan_diproses';
-        include 'laporan_diterima.php';
-        break;
-
-        case 'laporan_selesai';
-        include 'laporan_selesai.php';
+        case 'detail_laporan_menunggu';
+        include 'detail_laporan_menunggu.php';
         break;
 
         case 'tanggapan';
         include 'lihat_tanggapan.php';
         break;
-        
-		
+
+        case 'halaman';
+        include 'laporan_menunggu.php';
+        break;
+
+        case 'buat_laporan';
+        include 'buatLaporan.php';
+        break;
+
+        case 'detail_proses';
+        include 'detail_laporan_diterima.php';
+        break;
 	}
 }
 
@@ -38,7 +56,7 @@ if (isset($_GET['url']))
  <?php 
 		
         require '../koneksi.php';
-        $sql=mysqli_query($conn,"SELECT * FROM pengaduan WHERE status='cc'");
+        $sql=mysqli_query($conn,"SELECT * FROM pengaduan WHERE status='proses'");
             if($cek=mysqli_num_rows($sql))
             {
             
@@ -93,7 +111,5 @@ if (isset($_GET['url']))
                             </div>
                         </div>
      <?php           
-     } 
-           
-      }
+     } }
      ?>

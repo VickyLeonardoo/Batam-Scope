@@ -20,7 +20,7 @@ if (mysqli_num_rows($cek) == 0) {
 
 ?><script type="text/javascript">
 		alert('Data Berhasil Disimpan');
-		window.location = 'index.php';
+		window.location = 'login.php';
 	</script>
 
 <?php
@@ -28,7 +28,7 @@ if (mysqli_num_rows($cek) == 0) {
 ?>
 	<script type="text/javascript">
 		alert('Username Anda Sudah Ada');
-		window.location = 'index.php';
+		window.location = 'login.php';
 	</script>
 <?php
 }

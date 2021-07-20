@@ -1,12 +1,12 @@
 <?php  
 session_start();
-if(!isset($_SESSION['nik']))
+if(!isset($_SESSION['nama']))
 {
   die("Anda Belum Login");
 }
-if($_SESSION['level']!="Jur Informatika")
+if($_SESSION['level']!="Manajemen")
 {
-  die('Akun Anda Tidak Valid <br> <a href="index.php">Kembali</a>');
+  die('Anda Bukan Admin <br> <a href="../index.php">Kembali</a>');
   
 }
 ?>
@@ -32,7 +32,18 @@ if($_SESSION['level']!="Jur Informatika")
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script language="JavaScript" type="text/javascript">
+$(document).ready(function(){
+    $("a.delete").click(function(e){
+        if(!confirm('Are you sure?')){
+            e.preventDefault();
+            return false;
+        }
+        return true;
+    });
+});
+</script>
 </head>
 
 <body id="page-top">
@@ -44,7 +55,7 @@ if($_SESSION['level']!="Jur Informatika")
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../sbak.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="page_manajemen.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-database"></i>
                 </div>
@@ -56,7 +67,7 @@ if($_SESSION['level']!="Jur Informatika")
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="../sbak.php">
+                <a class="nav-link" href="page_manajemen.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -69,22 +80,30 @@ if($_SESSION['level']!="Jur Informatika")
                 Menu
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-            <li class="nav-item">
-                <a class="nav-link" href="laporan_sbak.php">
-                    <i class="fas fa-table"></i>
-                    <span>Laporan Masuk</span></a>
-            </li> 
+
 
             <li class="nav-item">
-                <a class="nav-link" href="laporan_selesai.php">
+            
+            <li class="nav-item">
+                <a class="nav-link" href="?url=laporan_masuk">
+                    <i class="fas fa-table"></i>
+                    <span>Laporan Masuk</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="?url=laporan_diproses">
+                    <i class="fas fa-table"></i>
+                    <span>Laporan Proses</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="?url=laporan_selesai">
                     <i class="fas fa-table"></i>
                     <span>Laporan Selesai</span></a>
             </li>
-         </li>
 
-            <!--  Nav Item - Utilities Collapse Menu -->
+            </li>
+            <!-- Nav Item - Utilities Collapse Menu -->
 
 
             <!-- Divider -->
@@ -172,10 +191,11 @@ if($_SESSION['level']!="Jur Informatika")
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profile.php">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
+                            
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -193,78 +213,13 @@ if($_SESSION['level']!="Jur Informatika")
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-6">
-
-                        Selamat Datang
-                        <?php echo $_SESSION['nama']; ?>,Berikut Daftar Laporan Kamu
-                    </div>
-
+                
                     <!-- Content Row -->
                     <div class="row">
- 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-10 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                <?php 
-                                require '../../koneksi.php';
-                                $sql=mysqli_query($conn,"SELECT * FROM pengaduan where no='$_GET[no]'");
-                                $data=mysqli_fetch_array($sql);
-                                if ($data)
-                                {
 
- 
-       
-                                    ?>
-                                    <form action="simpan_tanggapan.php" method="POST">
-                                    <div class="form-group">
-                                    <div class="form-group">
-                                            <label for="">No Laporan</label>
-                                            <input type="text" class="form-control form-control-user" id="judul"
-                                                name="no" readonly value="<?php echo $data['no']; ?>">
-                                        </div>
-                                            <label for="">Judul Laporan</label>
-                                            <input type="text" class="form-control form-control-user" id="judul"
-                                                name="judul" readonly value="<?php echo $data['judul']; ?>">
-                                        </div>
-                                        <div class="form-group cols-sm-6">
-                                        <label for="">Tanggal Pengaduan</label>
-                                        <input type="text" class="form-control form-control-user" readonly value="<?php echo date('Y-m-d'); ?>" name="tgl_tanggapan">
-                                        </div>
-                                        <div class="form-group cols-sm-6">
-                                            <label>Tulis Tanggapan:</label>
-                                            <textarea class="form-control" rows="7" 
-                                            name="tanggapan" ></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">ID Petugas</label>
-                                            <input type="text" class="form-control form-control-user" id="judul"
-                                                name="id" readonly value="<?php echo $_SESSION['id_user']; ?>">
-                                        </div>
-                                        
-<br>
-                                        <div style="justify-content: center; align-items: center;" class="text-center">
-                                            <input type="submit" value="Kirim" name="" class="btn-primary"
-                                                style="border-radius: 6px; align-center">
-                                        <input type="reset" value="Reset" name="" class="btn-danger"
-                                                style="border-radius: 6px;">
-                                        </div>
-                                        <?php }?>
-                                        </form>         
-                              </div>
-                                </div>
-                            
-                            </div>
-                        </div>
+                        <?php include 'halaman_manajemen.php' ?>
 
                     </div>
-      
-     
-     
-
-    
-
-
 
 
 
@@ -296,11 +251,19 @@ if($_SESSION['level']!="Jur Informatika")
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="../../index.php">Logout</a>
+                            <a class="btn btn-primary" href="logout.php">Logout</a>
                         </div>
                     </div>
                 </div>
             </div>
+
+          
+            
+
+
+            
+           
+                     
 
             <!-- Bootstrap core JavaScript-->
             <script src="../vendor/jquery/jquery.min.js"></script>

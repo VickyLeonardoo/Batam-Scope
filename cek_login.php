@@ -14,7 +14,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['level'] = $row['level'];
 		
 
-		header("location:admin/d_admin.php");
+		header("location:admin/page_admin.php");
 	} else if ($row['level'] == "SBAK") {
 		$_SESSION['user'] = $user;
 		$_SESSION['nama'] = $row['nama'];
@@ -22,7 +22,9 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['id_user'] = $row['id_user'];
 
 		header("location:petugas/sbak.php");
-	} else if ($row['level'] == "Masyarakat") {
+	}
+	 
+	else if ($row['level'] == "Masyarakat") {
 		$_SESSION['user'] = $user;
 		$_SESSION['id_user'] = $id_user;
 		$_SESSION['nik'] = $nik;
@@ -35,7 +37,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['password'] = $row['password'];
 		$_SESSION['alamat'] = $row['alamat'];
 		$_SESSION['id_user'] = $row['id_user'];
-		header("location:masyarakat.php");
+		header("location:page_masyarakat.php?url=masyarakat");
 	}
     else if ($row['level'] == "SBKK") {
 		$_SESSION['user'] = $user;
@@ -81,7 +83,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['id_user'] = $row['id_user'];
 		
 
-		header("location:petugas/jur_elektro.php");
+		header("location:petugas/el/page_elektro.php");
 	}
     else if ($row['level'] == "Jur Manajemen Bisnis") {
 		$_SESSION['user'] = $user;
@@ -99,7 +101,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/jur_informatika.php");
+		header("location:petugas/if/page_informatika.php");
 	}
     else if ($row['level'] == "UPT PP") {
 		$_SESSION['user'] = $user;
@@ -180,7 +182,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 		
-		header("location:masyarakat.php");
+		header("location:petugas/other.php");
 	}
 	else if ($row['level'] == "Manajemen") {
 		$_SESSION['user'] = $user;

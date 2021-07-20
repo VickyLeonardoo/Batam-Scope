@@ -14,7 +14,7 @@ if ($sql)
 ?>
 <script type="text/javascript">
 	alert ('Data Berhasil Disimpan');
-	window.location='laporan_informatika.php';
+	window.location='page_informatika.php?url=laporan_masuk.php';
 </script>
 <?php
 }

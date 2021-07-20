@@ -143,21 +143,7 @@ if($_SESSION['level']!="Administrator")
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form action="" method="POST" class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Cari Judul Laporan" aria-label="Search"
-                                            aria-describedby="basic-addon2" name="carii">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="submit">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                
-                            </div>
+                            
                         </li>
 
                         <!-- Nav Item - Alerts -->
@@ -206,7 +192,7 @@ if($_SESSION['level']!="Administrator")
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                 
-                <form action="POST">
+                <form method="POST">
                         <input type="text" name="cari" placeholder="Cari Username" style="width: 280px; border-radius: 10px;">
                         <input type="submit" value="cari" style="border-radius: 10px;">
                         <br>
@@ -321,10 +307,6 @@ if($_SESSION['level']!="Administrator")
                         </div>
                         </div>
                     </div>
-
-                     </form>
-
-                    <!-- End of Footer -->
                     </form> 
                 </div>
                 <!-- End of Content Wrapper -->

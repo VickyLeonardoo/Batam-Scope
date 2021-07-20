@@ -10,13 +10,13 @@
                                                 <th>Nomor Pengaduan</th>
                                                 <th>Tanggal Ditanggapi</th>
                                                 <th>Tanggapan</th>
-                                               
+                                                
                                                 
                                             </tr>
                                         </thead>
                                         <?php 
                                         $noo=1;
-                                        require '../koneksi.php';
+                                        require '../../koneksi.php';
                                         $sql=mysqli_query($conn,"SELECT * FROM pengaduan, tanggapan where tanggapan.no='$_GET[no]' 
                                         and tanggapan.no=pengaduan.no");
                                         $cek = mysqli_num_rows($sql);

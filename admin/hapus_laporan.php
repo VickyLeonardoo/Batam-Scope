@@ -8,7 +8,7 @@ if($sql)
 	?>
 	<script type="text/javascript">
 		alert ('Data berhasil dihapus');
-		window.location='laporan_menunggu.php';
+		window.location='page_admin.php;
 
 	</script>
 

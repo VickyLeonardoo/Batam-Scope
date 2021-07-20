@@ -5,13 +5,13 @@ if (isset($_GET['url']))
 
 	switch($url)
 	{
-
+ 
         case 'laporan_masuk';
-        include 'laporan_menunggu.php';
+        include 'laporan_masuk.php';
         break;
 
-        case 'laporan_diproses';
-        include 'laporan_diterima.php';
+        case 'laporan_selesai';
+        include 'laporan_selesai.php';
         break;
 
         case 'laporan_selesai';
@@ -20,6 +20,14 @@ if (isset($_GET['url']))
 
         case 'tanggapan';
         include 'lihat_tanggapan.php';
+        break;
+        
+        case 'tanggapi';
+        include 'tulis_tanggapan.php';
+        break;
+
+        case 'detail';
+        include 'detail.php';
         break;
         
 		
@@ -37,8 +45,8 @@ if (isset($_GET['url']))
 ?>
  <?php 
 		
-        require '../koneksi.php';
-        $sql=mysqli_query($conn,"SELECT * FROM pengaduan WHERE status='cc'");
+        require '../../koneksi.php';
+            $sql=mysqli_query($conn,"SELECT * FROM pengaduan WHERE status='teruskan' and unit='Jur Elektro'");
             if($cek=mysqli_num_rows($sql))
             {
             
@@ -49,7 +57,7 @@ if (isset($_GET['url']))
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                             Laporan Yang Masuk</div>
+                                             Laporan Masuk</div>
                                             <div
                                                 class="h5 mb-0 font-weight-bold text-gray-800 badge badge-success badge-counter">
                                                 <?php echo $cek; ?></div>
@@ -65,11 +73,12 @@ if (isset($_GET['url']))
                         
      <?php           
      } 
-?>
+     ?>
+
 <?php 
 		
-        require '../koneksi.php';
-            $sql=mysqli_query($conn,"SELECT * FROM pengaduan WHERE status='teruskan'");
+        require '../../koneksi.php';
+            $sql=mysqli_query($conn,"SELECT * FROM pengaduan WHERE status='selesai' and unit='Jur Elektro'");
             if($cek=mysqli_num_rows($sql))
             {
             
@@ -80,7 +89,7 @@ if (isset($_GET['url']))
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                             Laporan Diteruskan</div>
+                                             Laporan Selesai</div>
                                             <div
                                                 class="h5 mb-0 font-weight-bold text-gray-800 badge badge-success badge-counter">
                                                 <?php echo $cek; ?></div>
@@ -92,8 +101,8 @@ if (isset($_GET['url']))
                                 </div>
                             </div>
                         </div>
+
+                        
      <?php           
-     } 
-           
-      }
+     } }
      ?>
