@@ -47,7 +47,6 @@
                         <tbody>
                                             
                                                 <td><?php echo $data['no']?></td>
-                                            
                                                 <td><?php echo $data['judul']; ?></td>
                                                 <td><?php echo $data['isi'];?></td>
                                                 <th><?php echo $data['investigasi']?></th>

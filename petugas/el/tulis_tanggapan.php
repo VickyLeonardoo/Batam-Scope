@@ -15,7 +15,7 @@
                                     <div class="form-group">
                                     <div class="form-group">
                                             <label for="">No Laporan</label>
-                                            <input type="text" class="form-control form-control-user" id="judul"
+                                            <input type="text" class="form-control form-conztrol-user" id="judul"
                                                 name="no" readonly value="<?php echo $data['no']; ?>">
                                         </div>
                                             <label for="">Judul Laporan</label>

@@ -4,7 +4,6 @@ $no=$_POST['no'];
 $nama=$_POST['nama'];
 $nik=$_POST['nik'];
 $judul=$_POST['judul'];
-$lokasi=$_POST['lokasi'];
 $isi=$_POST['isi'];
 $level=$_POST['level'];
 
@@ -17,7 +16,7 @@ if ($sql)
 ?>
 <script type="text/javascript">
 	alert ('Data Berhasil Disimpan');
-	window.location='../petugas_mesin.php';
+
 </script>
 <?php
 }

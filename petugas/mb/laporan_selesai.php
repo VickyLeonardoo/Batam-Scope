@@ -1,15 +1,10 @@
-<input type="text" name="cari" placeholder="Cari Nomor Laporan" style="width: 280px; border-radius: 10px;">
-<input type="submit" value="cari" style="border-radius: 10px;">
-
-<div class="col-xl-12 col-md-6 mb-4">  <br><br>
-                
+<div class="col-xl-12 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                 <?php 
                                     require '../../koneksi.php';
-                                    error_reporting(0);
                                     $jumlahDataPerHalaman = 10;
-                                    $hasil= mysqli_query($conn,"SELECT * from pengaduan where status='Selesai' and unit='Jur Elektro'");
+                                    $hasil= mysqli_query($conn,"SELECT * from pengaduan where status='Selesai' and unit='Jur Manajemen Bisnis'");
                                     $jumlahData = mysqli_num_rows($hasil);
                                     $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
                                     $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1 ;
@@ -22,30 +17,23 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                
+                                                <th>ID Aduan</th>
                                                 <th>Judul</th>
                                                 <th>Isi</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <?php 
-                                        require '../../koneksi.php';
                                         $no=1;
-                                        $carii=$_POST['cari'];
-                                        if($carii != ''){
-                                            $sql = mysqli_query($conn,"SELECT * from pengaduan where status = 'selesai' and no like '".$carii."' limit $awalData,$jumlahDataPerHalaman");
-                                        }else{
-                                            $sql = mysqli_query($conn,"SELECT * from pengaduan WHERE status='selesai' and unit='Jur Elektro' limit $awalData,$jumlahDataPerHalaman");
-                                        }
-                                    
-                                   
-                                     while($data=mysqli_fetch_array($sql)){
-                    
-                  
-                  ?>
-                        <tbody>
-                                            
-                                              
+                                        require '../../koneksi.php';
+                                        $sql = mysqli_query($conn,"SELECT * from pengaduan where status='Selesai' and unit='Jur Manajemen Bisnis' order by no asc limit $awalData,$jumlahDataPerHalaman");
+                                        while($data=mysqli_fetch_array($sql)){
+
+                                        
+                                        ?>
+                                        <tbody>
+                                            <tr>
+                                                <td><?php echo $no++; ?></td>
                                                 <td><?php echo $data['no']; ?></td>
                                                 <td><?php echo $data['judul']; ?></td>
                                                 <td><?php echo $data['isi'];?></td>

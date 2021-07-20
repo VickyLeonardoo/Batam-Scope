@@ -11,7 +11,7 @@
  
        
                                     ?>
-                                    <form action="simpan_tanggapan.php" method="POST">
+                                    <form action="asd.php" method="POST">
                                     <div class="form-group">
                                     <div class="form-group">
                                             <label for="">No Laporan</label>

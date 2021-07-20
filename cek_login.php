@@ -73,7 +73,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/petugas_mesin.php");
+		header("location:petugas/mesin/page_mesin.php");
 	}
     else if ($row['level'] == "Jur Elektro") {
 		$_SESSION['user'] = $user;
@@ -92,7 +92,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/jur_manajemen_bisnis.php");
+		header("location:petugas/mb/page_mb.php");
 	}
     else if ($row['level'] == "Jur Informatika") {
 		$_SESSION['user'] = $user;
@@ -155,7 +155,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/p2m.php");
+		header("location:petugas/p2m/page_p2m.php");
 	}
     else if ($row['level'] == "SPI") {
 		$_SESSION['user'] = $user;

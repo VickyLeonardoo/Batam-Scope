@@ -1,10 +1,14 @@
 <?php  
 session_start();
-if(!isset($_SESSION['nik']))
+if(!isset($_SESSION['nama']))
 {
   die("Anda Belum Login");
 }
-
+if($_SESSION['level']!="P2M")
+{
+  die('Anda Bukan Admin <br> <a href="../../login.php">Kembali</a>');
+  
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +44,7 @@ if(!isset($_SESSION['nik']))
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="masyarakat.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="page_mesin.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-database"></i>
                 </div>
@@ -52,7 +56,7 @@ if(!isset($_SESSION['nik']))
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="masyarakat.php">
+                <a class="nav-link" href="page_mesin.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -65,18 +69,21 @@ if(!isset($_SESSION['nik']))
                 Menu
             </div>
 
+
+
             <li class="nav-item">
             <li class="nav-item">
-                <a class="nav-link" href="mku.php.php">
+                <a class="nav-link" href="?url=laporan_masuk">
                     <i class="fas fa-table"></i>
                     <span>Laporan Masuk</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="laporan_selesai.php">
+                <a class="nav-link" href="?url=laporan_selesai">
                     <i class="fas fa-table"></i>
                     <span>Laporan Selesai</span></a>
             </li>
+            
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -110,18 +117,7 @@ if(!isset($_SESSION['nik']))
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Cari Judul Laporan" aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                   
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -130,24 +126,10 @@ if(!isset($_SESSION['nik']))
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
+                               
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Cari Judul Laporan" aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            
                         </li>
 
                         <!-- Nav Item - Alerts -->
@@ -159,18 +141,13 @@ if(!isset($_SESSION['nik']))
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    <?php echo $_SESSION['nama']; ?>
-                                </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['nama']; ?></span>
                                 <img class="img-profile rounded-circle" src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profile.php">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
+                               
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -188,72 +165,16 @@ if(!isset($_SESSION['nik']))
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-6">
-
-                        Selamat Datang
-                        <?php echo $_SESSION['nama']; ?>,Berikut Daftar Laporan Kamu
-                    </div>
+                  
 
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-12 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                            <th>No</th>
-                                                <th>Judul</th>
-                                                <th>Nomor Pengaduan</th>
-                                                <th>Tanggal Ditanggapi</th>
-                                                <th>Tanggapan</th>
-                                               
-                                                
-                                            </tr>
-                                        </thead>
-                                        <?php 
-                                        $noo=1;
-                                        require '../../koneksi.php';
-                                        $sql=mysqli_query($conn,"SELECT * FROM pengaduan, tanggapan where tanggapan.no='$_GET[no]' 
-                                        and tanggapan.no=pengaduan.no");
-                                        $cek = mysqli_num_rows($sql);
-                                        if ($cek<1){
-                                            echo "<font color='red'>Mohon bersabar, Pengaduan belum ditanggapi</font>";
-                                        }
-                                        else {
-                                        while($data=mysqli_fetch_array($sql)){
 
-                                        
-                                        ?>
-                                        <tbody>
-                                        
-                                            <tr>
-                                            <td><?php echo $noo++ ?></td>
-                                                <td><?php echo $data['judul'] ?></td>
-                                                <td><?php echo $data['no'] ?></td>
-                                                <td><?php echo $data['tgl_tanggapan']?></td>
-                                                <td><?php echo $data['tanggapan'] ?></td>
-                                               
-                                                
-                                        </tbody>
-                                       <?php }}  ?>
-                                    </table>
-                                            </div>
-                                </div>
-                            </div>
-                        </div>
+                    <?php include 'halaman.php' ?>
+
 
                     </div>
-      
-     
-     
-
-    
-
-
 
 
 
@@ -285,7 +206,7 @@ if(!isset($_SESSION['nik']))
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="../login.php">Logout</a>
+                            <a class="btn btn-primary" href="../../logout.php">Logout</a>
                         </div>
                     </div>
                 </div>

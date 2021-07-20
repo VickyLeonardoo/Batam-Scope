@@ -9,7 +9,7 @@
                                     require '../../koneksi.php';
                                     error_reporting(0);
                                     $jumlahDataPerHalaman = 10;
-                                    $hasil= mysqli_query($conn,"SELECT * from pengaduan where status='Selesai' and unit='Jur Elektro'");
+                                    $hasil= mysqli_query($conn,"SELECT * from pengaduan where status='Selesai' and unit='Jur Manajemen Bisnis'");
                                     $jumlahData = mysqli_num_rows($hasil);
                                     $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
                                     $halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1 ;
@@ -35,7 +35,7 @@
                                         if($carii != ''){
                                             $sql = mysqli_query($conn,"SELECT * from pengaduan where status = 'selesai' and no like '".$carii."' limit $awalData,$jumlahDataPerHalaman");
                                         }else{
-                                            $sql = mysqli_query($conn,"SELECT * from pengaduan WHERE status='selesai' and unit='Jur Elektro' limit $awalData,$jumlahDataPerHalaman");
+                                            $sql = mysqli_query($conn,"SELECT * from pengaduan WHERE status='selesai' and unit='Jur Manajemen Bisnis' limit $awalData,$jumlahDataPerHalaman");
                                         }
                                     
                                    

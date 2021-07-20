@@ -8,7 +8,7 @@ $lokasi=$_POST['lokasi'];
 $isi=$_POST['isi'];
 $level=$_POST['level'];
 
- 
+
 
 $sql=mysqli_query($conn,"UPDATE pengaduan SET status='selesai' where no='$no'");
 
@@ -17,7 +17,7 @@ if ($sql)
 ?>
 <script type="text/javascript">
 	alert ('Data Berhasil Disimpan');
-	window.location='../mku.php';
+	window.location='page_informatika.php';
 </script>
 <?php
 }

@@ -4,9 +4,9 @@ if(!isset($_SESSION['nama']))
 {
   die("Anda Belum Login");
 }
-if($_SESSION['level']!="MKU")
+if($_SESSION['level']!="Jur Mesin")
 {
-  die('Anda Bukan Admin <br> <a href="../../index.php">Kembali</a>');
+  die('Anda Bukan Admin <br> <a href="../../login.php">Kembali</a>');
   
 }
 ?>
@@ -44,7 +44,7 @@ if($_SESSION['level']!="MKU")
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../mku.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="page_mesin.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-database"></i>
                 </div>
@@ -56,7 +56,7 @@ if($_SESSION['level']!="MKU")
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="../mku.php">
+                <a class="nav-link" href="page_mesin.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -73,16 +73,17 @@ if($_SESSION['level']!="MKU")
 
             <li class="nav-item">
             <li class="nav-item">
-                <a class="nav-link" href="mku.php.php">
+                <a class="nav-link" href="?url=laporan_masuk">
                     <i class="fas fa-table"></i>
                     <span>Laporan Masuk</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="laporan_selesai.php">
+                <a class="nav-link" href="?url=laporan_selesai">
                     <i class="fas fa-table"></i>
                     <span>Laporan Selesai</span></a>
             </li>
+            
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -116,18 +117,7 @@ if($_SESSION['level']!="MKU")
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Cari Judul Laporan" aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                   
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -136,24 +126,10 @@ if($_SESSION['level']!="MKU")
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
+                               
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Cari Judul Laporan" aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            
                         </li>
 
                         <!-- Nav Item - Alerts -->
@@ -165,26 +141,13 @@ if($_SESSION['level']!="MKU")
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    <?php echo $_SESSION['nama']; ?>
-                                </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['nama']; ?></span>
                                 <img class="img-profile rounded-circle" src="../img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
+                               
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -202,67 +165,15 @@ if($_SESSION['level']!="MKU")
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-6">
-
-                        Selamat Datang
-                        <?php echo $_SESSION['nama']; ?>,Berikut Daftar Laporan Kamu
-                    </div>
+                  
 
                     <!-- Content Row -->
                     <div class="row">
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-12 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                <div class="table-responsive">
-                                <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>ID Aduan</th>
-                                                <th>Judul</th>
-                                                <th>Isi</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <?php 
-                                        $i = 1;
-                                        require '../../koneksi.php';
-                                        $sql = mysqli_query($conn,"SELECT * from pengaduan where status='teruskan' and unit='Petugas Mesin'");
-                                        while($data=mysqli_fetch_array($sql)){
 
-                                        
-                                        ?>
-                                        <tbody>
-                                            <tr>
-                                                <td><?php echo $i++; ?></td>
-                                                <td><?php echo $data['no']; ?></td>
-                                                <td><?php echo $data['judul']; ?></td>
-                                                <td><?php echo $data['isi'];?></td>
-                                                <td>
-                                                    <a href="detail_mesin.php?no=<?php echo $data['no']; ?>" class="btn btn-info btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-check"></i>
-                                                        </span>
-                                                        <span class="text">Detail</span>
-                                                    </a>
-                                                    <a href="tulis_tanggapan.php?no=<?php echo $data['no']; ?>" class="btn btn-success btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-check"></i>
-                                                        </span>
-                                                        <span class="text">Tanggapi</span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                       <?php  } ?>
-                                    </table>
+                    <?php include 'halaman.php' ?>
 
-                                </div> 
-                            </div>
-                        </div>
-                        </div>
+
                     </div>
 
 
@@ -295,7 +206,7 @@ if($_SESSION['level']!="MKU")
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="../../index.php">Logout</a>
+                            <a class="btn btn-primary" href="../../logout.php">Logout</a>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ if ($sql)
 ?>
 <script type="text/javascript">
 	alert ('Data Berhasil Disimpan');
-	window.location='Jur Manajemen Bisnis.php';
+	window.location='page_mb.php?url=laporan_masuk.php';
 </script>
 <?php
 }
