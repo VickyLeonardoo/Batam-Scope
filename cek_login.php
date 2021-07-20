@@ -21,7 +21,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['level'] = $row['level'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/sbak.php");
+		header("location:petugas/sbak/page_sbak.php");
 	}
 	 
 	else if ($row['level'] == "Masyarakat") {
@@ -46,7 +46,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/sbkk.php");
+		header("location:petugas/sbkk/page_sbkk.php");
 	}
     else if ($row['level'] == "SBPK") {
 		$_SESSION['user'] = $user;
@@ -55,7 +55,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/sbpk.php");
+		header("location:petugas/sbpk/page_sbpk.php");
 	}
     else if ($row['level'] == "SBUM") {
 		$_SESSION['user'] = $user;
@@ -64,7 +64,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/sbum.php");
+		header("location:petugas/sbum/page_sbum.php");
 	}
     else if ($row['level'] == "Jur Mesin") {
 		$_SESSION['user'] = $user;
@@ -110,7 +110,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/upt_pp.php");
+		header("location:petugas/pp/page_pp.php");
 	}
     else if ($row['level'] == "UPT SI") {
 		$_SESSION['user'] = $user;
@@ -119,7 +119,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/upt_si.php");
+		header("location:petugas/si/page_si.php");
 	}
     else if ($row['level'] == "UPT PERPUS") {
 		$_SESSION['user'] = $user;
@@ -137,7 +137,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/upt_pengadaan.php");
+		header("location:petugas/pengadaan/page_pengadaan.php");
 	}
     else if ($row['level'] == "UPT PM") {
 		$_SESSION['user'] = $user;
@@ -146,7 +146,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/upt_pm.php");
+		header("location:petugas/pm/page_pm.php");
 	}
     else if ($row['level'] == "P2M") {
 		$_SESSION['user'] = $user;
@@ -164,7 +164,7 @@ if(mysqli_num_rows($data)>0){
 		$_SESSION['nik'] = $row['nik'];
 		$_SESSION['id_user'] = $row['id_user'];
 
-		header("location:petugas/spi.php");
+		header("location:petugas/spi/page_spi.php");
 	}
     else if ($row['level'] == "MKU") {
 		$_SESSION['user'] = $user;
